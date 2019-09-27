@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js"
+      ]
+    },
+    {
+      "library": "datatables@1.10.19",
+      "destination": "wwwroot/lib/datatables/",
+      "files": [
+        "js/jquery.dataTables.min.js",
+        "css/dataTables.bootstrap4.min.css",
+        "css/jquery.dataTables.min.css",
+        "js/dataTables.bootstrap4.min.js"
+      ]
+    },
+    {
+      "library": "ionicons@4.5.6",
+      "destination": "wwwroot/lib/ionicons/",
+      "files": [
+        "css/ionicons.min.css"
+      ]
+    },
+    {
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "font-awesome@5.11.2",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "dropzone@5.5.1",
+      "destination": "wwwroot/lib/dropzone/",
+      "files": [
+        "min/dropzone.min.js",
+        "min/dropzone.min.css"
+      ]
+    }
+  ]
+}

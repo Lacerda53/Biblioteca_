@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Biblioteca._Infra;
+using Biblioteca._Repositorio;
+using Biblioteca._Repositorio.Core;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +13,8 @@ namespace Biblioteca
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IDB, MSSQL>();
+            services.AddTransient<ILivroRepositorio, LivroRepositorio>();
             services.AddMvc();
         }
 
