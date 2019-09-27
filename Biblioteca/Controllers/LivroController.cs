@@ -75,9 +75,14 @@ namespace Biblioteca.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(Livro livro)
         {
-            
+
             if (ModelState.IsValid)
             {
+                var arquivos = Arquivos.ListaArquivos();
+                foreach (var item in arquivos)
+                {
+                    livro.Imagem = item.Nome;
+                }
                 if (string.IsNullOrEmpty(livro.Imagem))
                 {
                     ModelState.AddModelError("Image", "A imagem principal é necessaria");

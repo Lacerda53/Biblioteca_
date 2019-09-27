@@ -8,44 +8,17 @@ namespace Biblioteca.Services
 {
     public class Arquivos
     {
-        public static List<ArquivosViewModel> _arquivos = new List<ArquivosViewModel>();
+        private static List<ArquivosViewModel> _arquivos = new List<ArquivosViewModel>();
 
         public static void AddArquivos(ArquivosViewModel nomeArquivo)
         {
             _arquivos.Add(nomeArquivo);
         }
 
-
-        //public static ArquivosViewModel BuscarArquivo(string nomeArquivo, string chave, string usuario)
-        //{
-        //    string nomeOriginal = String.Empty;
-        //    foreach (var item in ListaNomeArquivos(usuario))
-        //    {
-
-
-        //        List<string> nomeAtual = item.Nome.Split('.').ToList();
-        //        nomeAtual.RemoveAt(nomeAtual.Count - 2);
-        //        nomeOriginal = string.Join(".", nomeAtual);
-
-        //        if (nomeOriginal == nomeArquivo && chave == item.Chave && item.Usuario == usuario)
-        //            return item;
-
-        //    }
-        //    return null;
-        //}
-        //public static bool BuscarArquivo(string chave, string usuario)
-        //{
-        //    string nomeOriginal = String.Empty;
-        //    var arquivos = ListaNomeArquivos(usuario);
-        //    foreach (var item in arquivos)
-        //    {
-
-        //        if (item.Chave == chave)
-        //            return true;
-
-        //    }
-        //    return false;
-        //}
+        public static IEnumerable<ArquivosViewModel> ListaArquivos()
+        {
+            return _arquivos;
+        }
 
         public static void DeletarArquivo(ArquivosViewModel nomeArquivo)
         {
