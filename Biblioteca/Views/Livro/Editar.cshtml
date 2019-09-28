@@ -4,62 +4,64 @@
     ViewData["Title"] = "Editar";
 }
 
-<h2>Editar</h2>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-gray">
+                <div class="card-header">
+                    <h3 class="card-title">Editar</h3>
 
-<h4>Livro</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form asp-controller="Livro" asp-action="Editar">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Titulo" class="control-label"></label>
+                                    <input asp-for="Titulo" class="form-control" />
+                                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Sinopse" class="control-label"></label>
+                                    <textarea rows="7" asp-for="Sinopse" class="form-control"></textarea>
+                                    <span asp-validation-for="Sinopse" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Autor" class="control-label"></label>
+                                    <input asp-for="Autor" class="form-control" />
+                                    <span asp-validation-for="Autor" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Editora" class="control-label"></label>
+                                    <input asp-for="Editora" class="form-control" />
+                                    <span asp-validation-for="Editora" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Unidade" class="control-label"></label>
+                                    <input asp-for="Unidade" type="number" min="1" class="form-control" />
+                                    <span asp-validation-for="Unidade" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Genero" class="control-label"></label>
+                                    <input asp-for="Genero" class="form-control" />
+                                    <span asp-validation-for="Genero" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Imagem" type="hidden" />
+                                    <input type="submit" value="Salvar" class="btn btn-warning" />
+                                    <a asp-action="Index" class="btn btn-default">Cancelar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sinopse" class="control-label"></label>
-                <input asp-for="Sinopse" class="form-control" />
-                <span asp-validation-for="Sinopse" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Autor" class="control-label"></label>
-                <input asp-for="Autor" class="form-control" />
-                <span asp-validation-for="Autor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Editora" class="control-label"></label>
-                <input asp-for="Editora" class="form-control" />
-                <span asp-validation-for="Editora" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Unidade" class="control-label"></label>
-                <input asp-for="Unidade" class="form-control" />
-                <span asp-validation-for="Unidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genero" class="control-label"></label>
-                <input asp-for="Genero" class="form-control" />
-                <span asp-validation-for="Genero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</section>

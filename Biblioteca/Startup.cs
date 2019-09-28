@@ -24,7 +24,7 @@ namespace Biblioteca
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseMvc(routes => routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"));
+            app.UseMvc(routes => routes.MapRoute("default", "{controller=Livro}/{action=Index}/{id?}"));
         }
     }
 }

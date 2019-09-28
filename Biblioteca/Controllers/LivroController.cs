@@ -125,6 +125,31 @@ namespace Biblioteca.Controllers
                 return View(errors);
             }
         }
+        public ActionResult Estoque(Guid Id)
+        {
+            var item = _LivroRep.BuscarPorId(Id);
+            return View(item);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Estoque(Livro livro)
+        {
+            if (ModelState.IsValid)
+            {
+                _LivroRep.Editar(livro);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                string errors = string.Empty;
+                foreach (var erro in ModelState)
+                {
+                    errors += $"{erro}\n";
+                }
+                return View(errors);
+            }
+        }
 
         public ActionResult Deletar(Guid Id)
         {
