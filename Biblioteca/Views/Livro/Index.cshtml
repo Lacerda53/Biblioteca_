@@ -65,19 +65,19 @@
                                 @item.Genero
                             </td>
                             <td class="project-actions col-md-2 text-right">
-                                <a class="btn btn-primary btn-sm" asp-controller="Livro" asp-action="Detalhes" asp-route-id="@item.Id">
+                                <a class="btn btn-primary btn-sm" title="Visualizar" asp-controller="Livro" asp-action="Detalhes" asp-route-id="@item.Id">
                                     <i class="fas fa-eye">
                                     </i>
                                 </a>
-                                <a class="btn btn-warning btn-sm" asp-controller="Livro" asp-action="Estoque" asp-route-id="@item.Id">
+                                <a class="btn btn-warning btn-sm" title="Estoque" asp-controller="Livro" asp-action="Estoque" asp-route-id="@item.Id">
                                     <i class="fas fa-archive">
                                     </i>
                                 </a>
-                                <a class="btn btn-info btn-sm" asp-controller="Livro" asp-action="Editar" asp-route-id="@item.Id">
+                                <a class="btn btn-info btn-sm" title="Editar" asp-controller="Livro" asp-action="Editar" asp-route-id="@item.Id">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                 </a>
-                                <a class="btn btn-danger btn-sm" asp-controller="Livro" asp-action="Deletar" asp-route-id="@item.Id">
+                                <a class="btn btn-danger btn-sm" title="Deletar" asp-controller="Livro" asp-action="Deletar" asp-route-id="@item.Id">
                                     <i class="fas fa-trash">
                                     </i>
                                 </a>

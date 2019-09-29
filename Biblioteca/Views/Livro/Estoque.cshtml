@@ -74,7 +74,7 @@
                         <input asp-for="Imagem" type="hidden" />
                         <div class="form-group">
                             <label asp-for="Estoque" class="control-label"></label>
-                            <input asp-for="Estoque" type="number" min="0" class="form-control" />
+                            <input asp-for="Estoque" type="number" min="0" max="@Model.Unidade" class="form-control" />
                             <span asp-validation-for="Estoque" class="text-danger"></span>
                         </div>
                         <div class="form-group">
