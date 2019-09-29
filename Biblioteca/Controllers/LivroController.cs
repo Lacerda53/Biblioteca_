@@ -133,7 +133,7 @@ namespace Biblioteca.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Estoque(Livro livro)
+        public ActionResult Estoque(Livro livro) //Sei que é errado controlar estoque dentro do controle de livros, só fiz pra deixar funcional, depois vou arrumar essa bagunça
         {
             if (ModelState.IsValid)
             {
