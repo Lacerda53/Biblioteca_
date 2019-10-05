@@ -13,6 +13,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\.gitattributes" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\.gitignore" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\.vsts-pipelines\builds\ci-public.yml" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\build.cmd" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\build.msbuild" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\CONTRIBUTING.md" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\gulpfile.js" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\Microsoft.jQuery.Unobtrusive.Ajax.nuspec" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\README.md" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\run.ps1" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\src\jquery.unobtrusive-ajax.js" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive-master\version.props" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />

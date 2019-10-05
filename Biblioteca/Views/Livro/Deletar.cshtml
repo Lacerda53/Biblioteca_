@@ -63,6 +63,6 @@
     
     <form asp-action="Deletar">
         <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#conteudo">Back to List</a>
     </form>
 </div>

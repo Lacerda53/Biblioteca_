@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Controllers
 {
-    public class LivroController : Controller
+    public class LivroController : BaseController
     {
         public ILivroRepositorio _LivroRep;
         public LivroController(ILivroRepositorio LivroRepositorio)
@@ -21,7 +21,10 @@ namespace Biblioteca.Controllers
         public ActionResult Index()
         {
             var item = _LivroRep.ListarLivros();
-            return View(item);
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView(item);
+            else
+                return View(item);
         }
 
         [HttpPost]
@@ -62,12 +65,16 @@ namespace Biblioteca.Controllers
 
         public ActionResult Detalhes(Guid Id)
         {
-            var item = _LivroRep.BuscarPorId(Id);
+            var item = _LivroRep.BuscarPorId(Id); 
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView(item);
             return View(item);
         }
 
         public ActionResult Cadastrar()
         {
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView();
             return View();
         }
 
@@ -86,11 +93,15 @@ namespace Biblioteca.Controllers
                 if (string.IsNullOrEmpty(livro.Imagem))
                 {
                     ModelState.AddModelError("Image", "A imagem principal é necessaria");
+                    if (HttpExtensions.IsAjaxRequest(Request))
+                        return PartialView("Cadastrar", livro);
                     return View("Cadastrar", livro);
                 }
                 else
                 {
                     _LivroRep.Adicionar(livro);
+                    if (HttpExtensions.IsAjaxRequest(Request))
+                        return PartialView("Index");
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -103,6 +114,8 @@ namespace Biblioteca.Controllers
         public ActionResult Editar(Guid Id)
         {
             var item = _LivroRep.BuscarPorId(Id);
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView(item);
             return View(item);
         }
 
@@ -112,7 +125,9 @@ namespace Biblioteca.Controllers
         {
             if (ModelState.IsValid)
             {
-                _LivroRep.Editar(livro);
+                _LivroRep.Editar(livro); 
+                if (HttpExtensions.IsAjaxRequest(Request))
+                    return PartialView("Index");
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -128,6 +143,8 @@ namespace Biblioteca.Controllers
         public ActionResult Estoque(Guid Id)
         {
             var item = _LivroRep.BuscarPorId(Id);
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView(item);
             return View(item);
         }
 
@@ -138,6 +155,8 @@ namespace Biblioteca.Controllers
             if (ModelState.IsValid)
             {
                 _LivroRep.Editar(livro);
+                if (HttpExtensions.IsAjaxRequest(Request))
+                    return PartialView("Index");
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -154,6 +173,8 @@ namespace Biblioteca.Controllers
         public ActionResult Deletar(Guid Id)
         {
             var item = _LivroRep.BuscarPorId(Id);
+            if (HttpExtensions.IsAjaxRequest(Request))
+                return PartialView(item);
             return View(item);
         }
 
@@ -164,6 +185,8 @@ namespace Biblioteca.Controllers
             if (ModelState.IsValid)
             {
                 _LivroRep.Remover(Id);
+                if (HttpExtensions.IsAjaxRequest(Request))
+                    return PartialView("Index");
                 return RedirectToAction(nameof(Index));
             }
             else

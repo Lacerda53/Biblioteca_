@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form asp-controller="Livro" asp-action="Editar">
+                            <form asp-controller="Livro" asp-action="Editar" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#conteudo">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
                                     <label asp-for="Titulo" class="control-label"></label>
@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <input asp-for="Imagem" type="hidden" />
                                     <input type="submit" value="Salvar" class="btn btn-warning" />
-                                    <a asp-action="Index" class="btn btn-default">Cancelar</a>
+                                    <a asp-action="Index" class="btn btn-default" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#conteudo">Cancelar</a>
                                 </div>
                             </form>
                         </div>
