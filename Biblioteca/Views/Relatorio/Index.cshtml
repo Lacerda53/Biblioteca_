@@ -1,0 +1,41 @@
+﻿@model Biblioteca.Models.ViewModel.RelatorioViewModel
+@{
+    ViewData["Title"] = "Baixar";
+    ViewBag.Menu = "Relatorio";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="info-box col-md-5 mr-4">
+            <span class="info-box-icon bg-gradient-primary col-md-4"><i class="fa fa-book-open"></i></span>
+
+            <div class="info-box-content">
+                <span class="text-primary text-bold">Emprestados</span>
+                <form asp-controller="Relatorio" asp-action="DownloadExcelEmprestimo">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Mês do relatório</label>
+                        <input asp-for="DataRelatorio" placeholder="Ex. 08/2020" autocomplete="off" class="form-control" />
+                        <span asp-validation-for="DataRelatorio" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn bg-dark form-control"><i class="fa fa-file-download"></i> Baixar</button>
+                </form>
+            </div>
+        </div>
+        <div class="info-box col-md-5">
+            <span class="info-box-icon bg-gradient-warning col-md-4"><i class="fa fa-exclamation-triangle"></i></span>
+
+            <div class="info-box-content">
+                <span class="text-bold">Não devolvidos</span>
+                <form asp-controller="Relatorio" asp-action="DownloadExcelNaoDevolvido">
+                    <div class="form-group" style="opacity:0.3;pointer-events:none">
+                        <label class="control-label">Mês do relatório</label>
+                        <input placeholder="Ex. 08/2020" class="form-control disabled" />
+                    </div>
+                    <button type="submit" class="btn bg-dark form-control"><i class="fa fa-file-download"></i> Baixar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

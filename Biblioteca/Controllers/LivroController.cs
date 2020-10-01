@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Biblioteca.Controllers
 {
-    public class LivroController : BaseController
+    public class LivroController : Controller
     {
         public ILivroRepositorio _LivroRep;
         public LivroController(ILivroRepositorio LivroRepositorio)
@@ -21,9 +22,7 @@ namespace Biblioteca.Controllers
         public ActionResult Index()
         {
             var item = _LivroRep.ListarLivros();
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView(item);
-            else
+            ViewBag.CountLivros = item.Count();
                 return View(item);
         }
 
@@ -65,16 +64,12 @@ namespace Biblioteca.Controllers
 
         public ActionResult Detalhes(Guid Id)
         {
-            var item = _LivroRep.BuscarPorId(Id); 
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView(item);
+            var item = _LivroRep.BuscarPorId(Id);
             return View(item);
         }
 
         public ActionResult Cadastrar()
         {
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView();
             return View();
         }
 
@@ -90,20 +85,8 @@ namespace Biblioteca.Controllers
                 {
                     livro.Imagem = item.Nome;
                 }
-                if (string.IsNullOrEmpty(livro.Imagem))
-                {
-                    ModelState.AddModelError("Image", "A imagem principal é necessaria");
-                    if (HttpExtensions.IsAjaxRequest(Request))
-                        return PartialView("Cadastrar", livro);
-                    return View("Cadastrar", livro);
-                }
-                else
-                {
-                    _LivroRep.Adicionar(livro);
-                    if (HttpExtensions.IsAjaxRequest(Request))
-                        return PartialView("Index");
-                    return RedirectToAction(nameof(Index));
-                }
+                _LivroRep.Adicionar(livro);
+                return RedirectToAction(nameof(Index));
             }
             else
             {
@@ -114,8 +97,6 @@ namespace Biblioteca.Controllers
         public ActionResult Editar(Guid Id)
         {
             var item = _LivroRep.BuscarPorId(Id);
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView(item);
             return View(item);
         }
 
@@ -125,38 +106,7 @@ namespace Biblioteca.Controllers
         {
             if (ModelState.IsValid)
             {
-                _LivroRep.Editar(livro); 
-                if (HttpExtensions.IsAjaxRequest(Request))
-                    return PartialView("Index");
-                return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                string errors = string.Empty;
-                foreach (var erro in ModelState)
-                {
-                    errors += $"{erro}\n";
-                }
-                return View(errors);
-            }
-        }
-        public ActionResult Estoque(Guid Id)
-        {
-            var item = _LivroRep.BuscarPorId(Id);
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView(item);
-            return View(item);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Estoque(Livro livro) //Sei que é errado controlar estoque dentro do controle de livros, só fiz pra deixar funcional, depois vou arrumar essa bagunça
-        {
-            if (ModelState.IsValid)
-            {
                 _LivroRep.Editar(livro);
-                if (HttpExtensions.IsAjaxRequest(Request))
-                    return PartialView("Index");
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -173,8 +123,6 @@ namespace Biblioteca.Controllers
         public ActionResult Deletar(Guid Id)
         {
             var item = _LivroRep.BuscarPorId(Id);
-            if (HttpExtensions.IsAjaxRequest(Request))
-                return PartialView(item);
             return View(item);
         }
 
@@ -185,8 +133,6 @@ namespace Biblioteca.Controllers
             if (ModelState.IsValid)
             {
                 _LivroRep.Remover(Id);
-                if (HttpExtensions.IsAjaxRequest(Request))
-                    return PartialView("Index");
                 return RedirectToAction(nameof(Index));
             }
             else

@@ -1,8 +1,7 @@
-﻿@model Biblioteca.Models.Livro
-
+﻿@model Biblioteca.Models.Emprestimo
 @{
     ViewData["Title"] = "Detalhes";
-    ViewBag.Menu = "Livro";
+    ViewBag.Menu = "Emprestimo";
 }
 
 <section class="content">
@@ -10,7 +9,7 @@
         <div class="col-md-12">
             <div class="card card-gray">
                 <div class="card-header">
-                    <h3 class="card-title">@Model.Nome</h3>
+                    <h3 class="card-title"></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -21,46 +20,49 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <img src="~/images/Livros/@Model.Imagem" height="300" width="200" style="margin-bottom:10px" />
+                            @if (Model.Livro.Imagem != null)
+                            {
+                                <img src="~/images/Livros/@Model.Livro.Imagem" height="300" width="200" style="margin-bottom:10px" />
+                            }
+                            else
+                            {
+                                <i style="font-size:100px" class="fa fa-book"></i>
+                            }
                         </div>
                         <div class="offset-md-3 col-md-6" style="margin-top:-30%">
                             <dl>
                                 <dt>
-                                    Nome
+                                    Livro
                                 </dt>
                                 <dd>
-                                    @Model.Nome
+                                    @Model.Livro.Nome
                                 </dd>
                                 <dt>
-                                    Autor
+                                    Emprestado a
                                 </dt>
                                 <dd>
-                                    @Model.Autor
+                                    @Model.Aluno
                                 </dd>
                                 <dt>
-                                    Edição
+                                    No dia 
                                 </dt>
                                 <dd>
-                                    @Model.Edicao
+                                    @Model.DataEmprestimo.ToString("dd/MM/yy")
                                 </dd>
                                 <dt>
-                                    Quantidade
+                                    Devolvido no dia
                                 </dt>
                                 <dd>
-                                    @Model.Quantidade
-                                </dd>
-                                <dt>
-                                    Categoria
-                                </dt>
-                                <dd>
-                                    @Model.Categoria
+                                    @Model.DataDevolucao.ToString("dd/MM/yy")
                                 </dd>
                             </dl>
                         </div>
                     </div>
-                    <a asp-controller="Livro" asp-action="Index" class="btn btn-secondary">Voltar</a>
+                    <a asp-controller="Emprestimo" asp-action="Index" class="btn btn-secondary">Voltar</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+

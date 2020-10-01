@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Editar";
+    ViewBag.Menu = "Livro";
 }
 
 <section class="content">
@@ -20,17 +21,12 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <form asp-controller="Livro" asp-action="Editar" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#conteudo">
+                            <form asp-controller="Livro" asp-action="Editar">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
-                                    <label asp-for="Titulo" class="control-label"></label>
-                                    <input asp-for="Titulo" class="form-control" />
-                                    <span asp-validation-for="Titulo" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Sinopse" class="control-label"></label>
-                                    <textarea rows="7" asp-for="Sinopse" class="form-control"></textarea>
-                                    <span asp-validation-for="Sinopse" class="text-danger"></span>
+                                    <label asp-for="Nome" class="control-label"></label>
+                                    <input asp-for="Nome" class="form-control" />
+                                    <span asp-validation-for="Nome" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Autor" class="control-label"></label>
@@ -38,24 +34,24 @@
                                     <span asp-validation-for="Autor" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Editora" class="control-label"></label>
-                                    <input asp-for="Editora" class="form-control" />
-                                    <span asp-validation-for="Editora" class="text-danger"></span>
+                                    <label asp-for="Edicao" class="control-label"></label>
+                                    <input asp-for="Edicao" class="form-control" />
+                                    <span asp-validation-for="Edicao" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Unidade" class="control-label"></label>
-                                    <input asp-for="Unidade" type="number" min="1" class="form-control" />
-                                    <span asp-validation-for="Unidade" class="text-danger"></span>
+                                    <label asp-for="Quantidade" class="control-label"></label>
+                                    <input asp-for="Quantidade" type="number" min="1" class="form-control" />
+                                    <span asp-validation-for="Quantidade" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Genero" class="control-label"></label>
-                                    <input asp-for="Genero" class="form-control" />
-                                    <span asp-validation-for="Genero" class="text-danger"></span>
+                                    <label asp-for="Categoria" class="control-label"></label>
+                                    <input asp-for="Categoria" class="form-control" />
+                                    <span asp-validation-for="Categoria" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input asp-for="Imagem" type="hidden" />
-                                    <input type="submit" value="Salvar" class="btn btn-warning" />
-                                    <a asp-action="Index" class="btn btn-default" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#conteudo">Cancelar</a>
+                                    <input type="submit" value="Salvar" class="btn btn-success" />
+                                    <a asp-action="Index" class="btn btn-default">Voltar</a>
                                 </div>
                             </form>
                         </div>

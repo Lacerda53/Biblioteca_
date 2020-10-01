@@ -1,0 +1,25 @@
+﻿@model Biblioteca.Models.Emprestimo
+@{
+    ViewData["Title"] = "Default";
+}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Devolução de Livro</h5>
+                <a class="close" data-dismiss="modal" aria-label="Close" asp-controller="Emprestimo" asp-action="Index">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                <h4>Deseja confirmar a entrega do livro "@ViewBag.Livro" emprestado a @Model.Aluno?</h4>
+            </div>
+            <div class="modal-footer">
+                <form asp-controller="Emprestimo" asp-action="Devolver" asp-route-id="@Model.Id">
+                    <input type="submit" value="Confirmar" class="btn btn-success" />
+                    <a type="button" class="btn btn-secondary" asp-controller="Emprestimo" asp-action="Index">Voltar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

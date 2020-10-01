@@ -1,0 +1,63 @@
+﻿@model Biblioteca.Models.ViewModel.EmprestimoViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    ViewBag.Menu = "Emprestimo";
+}
+
+@section styles{
+    <link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="~/lib/select2/js/select2.min.js"></script>
+}
+
+<link href="~/lib/dropzone/min/dropzone.min.css" rel="stylesheet" />
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-gray">
+                <div class="card-header">
+                    <h3 class="card-title">Registro de Emprestimo</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form asp-controller="Emprestimo" asp-action="Cadastrar">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label class="control-label">Livro</label>
+                                    <select asp-for="IdLivro" asp-items="@ViewBag.Livros" class="js-example-basic-multiple js-states form-control" multiple="multiple">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Aluno" class="control-label"></label>
+                                    <input asp-for="Aluno" placeholder="Digite o nome do aluno" class="form-control" />
+                                    <span asp-validation-for="Aluno" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Emprestar" class="btn btn-success" />
+                                    <a asp-action="Index" class="btn btn-default">Voltar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2({
+                placeholder: 'Selecione o livro'
+            });
+        });
+    </script>
+}

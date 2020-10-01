@@ -20,27 +20,23 @@ namespace Biblioteca._Repositorio
             {
                 var query = " INSERT INTO Livro	     " +
                             "            (Id		 " +
-                            "            ,Titulo	 " +
+                            "            ,Nome	 " +
                             "            ,Imagem	 " +
-                            "            ,Sinopse	 " +
                             "            ,Autor		 " +
-                            "            ,Editora	 " +
-                            "            ,Unidade	 " +
-                            "            ,Genero	 " +
-                            "            ,Estoque	 " +
-                            "            ,Habilitado)" +
+                            "            ,Edicao	 " +
+                            "            ,Quantidade " +
+                            "            ,Categoria	 " +
+                            "            ,Status)" +
                             "      VALUES				 " +
                             "            (@Id         " +
-                            "            ,@Titulo     " +
+                            "            ,@Nome     " +
                             "            ,@Imagem 	 " +
-                            "            ,@Sinopse 	 " +
                             "            ,@Autor 	 " +
-                            "            ,@Editora 	 " +
-                            "            ,@Unidade 	 " +
-                            "            ,@Genero 	 " +
-                            "            ,@Unidade 	 " +
-                            "            ,@Habilitado)";
-                con.Execute(query, new { item.Id, item.Titulo, item.Imagem, item.Sinopse, item.Autor, item.Editora, item.Unidade, item.Estoque, item.Genero, item.Habilitado});
+                            "            ,@Edicao 	 " +
+                            "            ,@Quantidade" +
+                            "            ,@Categoria " +
+                            "            ,@Status)";
+                con.Execute(query, new { item.Id, item.Nome, item.Imagem, item.Autor, item.Edicao, item.Quantidade, item.Categoria, item.Status });
             }
         }
 
@@ -48,8 +44,8 @@ namespace Biblioteca._Repositorio
         {
             using(var con = DB.GetConnection())
             {
-                var query = "update Livro set Titulo=@Titulo, Sinopse=@Sinopse, Autor=@Autor, Editora=@Editora, Estoque=@Estoque, Unidade=@Unidade, Genero=@Genero where Id=@Id";
-                con.Execute(query, item );
+                var query = "update Livro set Nome=@Nome, Imagem=@Imagem, Edicao=@Edicao, Autor=@Autor, Quantidade=@Quantidade, Categoria=@Categoria, where Id=@Id";
+                con.Execute(query, new { item } );
             }
         }
 
@@ -66,7 +62,7 @@ namespace Biblioteca._Repositorio
         {
             using (var con = DB.GetConnection())
             {
-                var query = "select * from Livro where Habilitado = 1";
+                var query = "select * from Livro where Status = 1";
                 return con.Query<Livro>(query);
             }
         }
@@ -75,7 +71,7 @@ namespace Biblioteca._Repositorio
         {
             using (var con = DB.GetConnection())
             {
-                var query = "update Livro set Habilitado = 0 where Id=@Id";
+                var query = "update Livro set Status = 0 where Id=@Id";
                 con.Execute(query, new { Id });
             }
         }

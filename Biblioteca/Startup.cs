@@ -13,6 +13,7 @@ namespace Biblioteca
         {
             services.AddSingleton<IDB, MSSQL>();
             services.AddTransient<ILivroRepositorio, LivroRepositorio>();
+            services.AddTransient<IEmprestimoRepositorio, EmprestimoRepositorio>();
             services.AddMvc();
         }
 
